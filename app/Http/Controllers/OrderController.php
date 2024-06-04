@@ -42,8 +42,8 @@ class OrderController extends Controller
                 foreach ($order->orderItems as $orderItem) {
                     fputcsv($file, ['', '', '', $orderItem->product_title, $orderItem->price, $orderItem->quantity]);
                 }
-                fclose($file);
             }
+            fclose($file);
         };
 
         return Response::stream($callback, 200, $headers);
